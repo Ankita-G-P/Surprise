@@ -155,59 +155,6 @@
         </div>
     </div>
 
-    <script>
-console.log('Inline script loading!');
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded - testing unlock button...');
-    
-    const unlockBtn = document.getElementById('unlockBtn');
-    const passwordInput = document.getElementById('passwordInput');
-    const lockScreen = document.getElementById('lockScreen');
-    const mainContent = document.getElementById('mainContent');
-    const errorMessage = document.getElementById('errorMessage');
-    
-    console.log('Elements found:', {
-        unlockBtn: !!unlockBtn,
-        passwordInput: !!passwordInput,
-        lockScreen: !!lockScreen,
-        mainContent: !!mainContent,
-        errorMessage: !!errorMessage
-    });
-    
-    if (unlockBtn) {
-        console.log('Adding inline click listener...');
-        unlockBtn.addEventListener('click', function() {
-            console.log('Button clicked!');
-            const password = passwordInput.value;
-            console.log('Password entered:', password);
-            
-            if (password.toLowerCase() === 'iloveyougiddi') {
-                console.log('Password correct - unlocking!');
-                lockScreen.classList.remove('active');
-                mainContent.classList.add('active');
-                errorMessage.style.display = 'none';
-                alert('🎉 Welcome! Website unlocked!');
-            } else {
-                console.log('Password incorrect');
-                errorMessage.textContent = 'Incorrect Password 💔';
-                errorMessage.style.display = 'block';
-                passwordInput.value = '';
-                passwordInput.style.border = '2px solid red';
-                setTimeout(() => {
-                    passwordInput.style.border = '';
-                }, 1000);
-            }
-        });
-    }
-    
-    if (passwordInput) {
-        passwordInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                unlockBtn.click();
-            }
-        });
-    }
-});
-</script>
+    <script src="https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/script.js"></script>
 </body>
 </html>
