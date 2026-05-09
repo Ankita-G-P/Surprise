@@ -1,3 +1,5 @@
+console.log('Script.js is loading!');
+
 /**
  * script.js - Romantic Interactivity
  * Features: Password Lock, Fireworks, Hearts, Modal, Slideshow
