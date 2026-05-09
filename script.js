@@ -749,4 +749,4 @@ function initSparkleCursor() {
 // I'll add them to style.css in the next step or here
 initSparkleCursor();
 
-/*Every moment with you feels like a dream. On this special day, I wanted to create something as beautiful and magical as you are. You are the most beautiful part of my life ❤️.
+/*Every moment with you feels like a dream. On this special day, I wanted to create something as beautiful and magical as you are. You are the most beautiful part of my life ❤️.*/
