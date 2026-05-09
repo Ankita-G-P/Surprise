@@ -15,7 +15,7 @@ const CONFIG = {
     // ==========================================
     letterHeading: "My Dearest...💞", 
     letterBody: [
-        "This is my first time letter baritirod pls enara tapp idra hotti nag hako,nang heng start madbek anta gott agvalth actually en gotta eed ontara hosa experience ni nann life nag bandag inda na est kushi agi iden anta words nag express madlik agalla eno ontara beautifull feel. Nange ninn bagge ellanu ista ni nann mel preeti torso reeti,ninn care,ninn restrictions,nin sann sann vishya nu nenap itkolo reeti,nin este sitt nag idru na ning este sitt barsidru nang baidre tadkolalla na anta control madkoti ala ella andra ella ista.yen madod ond ond sala ninn mado restrictions ig ninu yedrig sikkag hakond hodibek anastad🤪but adu nann olledakke anta arta agi sumne agbidteni.Nin bari nann hudga aste ala you are my comfort zone,you are my safe place,you are my everything🌎.Thankyou for taking care of me,thankyou for being with me,thankyou nanna istond sahiskolodak nanu ning baal hurt madeni yen yenara baideni,matadeni ning yest sidi sidi madteni,na niddi kannago atva gotto gottildeno baal hurt madeni ning yelladakku sorry🥺,and adnella sahiskond nann jote iddidak thankyou very much😇.and I know ning nann joti preeti inda matado kina nang irritate madodrinda kaadod drinda na kushi anta🙄but its ok yello ond kade adu nangu ista😉.Thankyou nann hantakina ista pattiddak,nan nann kanas nagu ankondirlilla nanu obanna istond hacchkoteni love madteni anta ivella beda anta idar sahavasa beda hinta hucchata ella beda anta nann paadig idde na hantakig ee tara tali kedsi sari illa le ni nang beda nin too nind hate you chinna🥺😘You are my forever favourite ◖ıɐɹʎMıןʞ i always want my favourite🍫.Innu baal helod ada na but idrag agalla adka yedrig sikkag helteni ok na ivag jasti tali tinnalla togo na ning yenu kelkolalla nang yenu beda ninn inda just nang ninn preeti,ninn care,ninn time iste kodu sak bere enu kelalla plss nanna vatta bitt kodbeda yavaglu nann joti hinga iru plss🥺.Love you so much forever and ever..😘❤️",
+        "This is my first time letter baritirod pls enara tapp idra hotti nag hako,nang heng start madbek anta gott agvalth actually en gotta eed ontara hosa experience ni nann life nag bandag inda na est kushi agi iden anta words nag express madlik agalla eno ontara beautifull feel. Nange ninn bagge ellanu ista ni nann mel preeti torso reeti,ninn care,ninn restrictions,nin sann vishya nu nenap itkolo reeti,nin este sitt nag idru na ning este sitt barsidru nang baidre tadkolalla na anta control madkoti ala ella andra ella ista.yen madod ond sala ninn mado restrictions ig ninu yedrig sikkag hakond hodibek anastad🤪but adu nann olledakke anta arta agi sumne agbidteni.Nin bari nann hudga aste ala you are my comfort zone,you are my safe place,you are my everything🌎.Thankyou for taking care of me,thankyou for being with me,thankyou nann istond sahiskolodak nanu ning baal hurt madeni yen yenara baideni,matadeni ning yest sidi sidi madteni,na niddi kannago atva gotto gottildeno baal hurt madeni ning yelladakku sorry🥺,and adnella sahiskond nann jote iddidak thankyou very much😇.and I know ning nann joti preeti inda matado kina nang irritate madodrinda kaadod drinda na kushi anta🙄but its ok yello ond kade adu nangu ista😉.Thankyou nann hantakina ista pattiddak,nan nann kanas nagu ankondirlilla nanu obanna istond hacchkoteni love madteni anta ivella beda anta idar sahavasa beda hinta hucchata ella beda anta nann paadig idde na hantakig ee tara tali kedsi sari illa le ni nang beda nin too nind hate you chinna🥺😘You are my forever favourite ◖ıɐɹʎMıןʞ i always want my favourite🍫.Innu baal helod ada na but idrag agalla adka yedrig sikkag helteni ok na ivag jasti tali tinnalla togo na ning yenu kelkolalla nang yenu beda ninn inda just nang ninn preeti,ninn care,ninn time iste kodu sak bere enu kelalla plss nanna vatta bitt kodbeda yavaglu nann joti hinga iru plss🥺.Love you so much forever and ever..😘❤️",
         "From your Giddi❤️"                      
     ],
     // ==========================================
@@ -529,8 +529,6 @@ function stopSlideshow() {
     if (slideshowInterval) clearInterval(slideshowInterval);
 }
 
-
-
 // ==========================================
 // 💕 RENDER TIMELINE (Individual Slides)
 // ==========================================
@@ -723,5 +721,4 @@ function initSparkleCursor() {
 // I'll add them to style.css in the next step or here
 initSparkleCursor();
 
-/*Every moment with you feels like a dream. On this special day, I wanted to create something as beautiful and magical as you are. You are the most beautiful part of my life ❤️.",
-        "This website is a journey through our memories, a celebration of your day, and a small token of my infinite love for you.*/
+/*Every moment with you feels like a dream. On this special day, I wanted to create something as beautiful and magical as you are. You are the most beautiful part of my life ❤️.
