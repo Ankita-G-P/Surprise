@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Romantic Birthday Surprise ❤️</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+
+    <!-- Background Music (Hidden) -->
+    <!-- CHANGE MUSIC HERE: Replace 'music/birthday-song.mp3' with your own file -->
+    <audio id="bgMusic" loop volume="0.00001">
+        <source src="music4.mp3.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Canvas for Fireworks and Hearts -->
+    <canvas id="fireworksCanvas"></canvas>
+
+    <!-- Password Lock Screen -->
+    <div id="lockScreen" class="lock-screen active">
+        <div class="lock-content">
+            <div class="lock-heart-container">
+                <div class="glowing-heart">❤️</div>
+            </div>
+            <h1>A special birthday surprise is waiting for you ❤️</h1>
+            <div class="password-container">
+                <input type="password" id="passwordInput" placeholder="Enter the secret password...">
+                <button id="unlockBtn">Unlock ❤️</button>
+                <div id="errorMessage" class="error-text"></div>
+            </div>
+            <p class="lock-hint">Hint:Naan ninn kade yavagu eno helu anteni? </p>
+            <!-- Add a note for the developer -->
+            <!-- THE PASSWORD CAN BE CHANGED IN script.js -->
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden initially) -->
+    <div id="mainContent" class="main-content">
+        
+        <!-- Navigation Controls -->
+        <div class="main-nav-controls">
+            <button id="prevBtn" class="primary-nav-btn">Back</button>
+            <button id="nextBtn" class="primary-nav-btn">Next</button>
+        </div>
+
+        <!-- Cinematic Intro (Slide 0) -->
+        <section id="intro" class="section active slide-current">
+            <div class="container flex-center">
+                <div class="cinematic-container">
+                    <h2 class="cinematic-text" id="introText"></h2>
+                    <div class="scroll-indicator">
+                        <span>Swipe or Scroll to explore</span>
+                        <div class="scroll-arrow">↓</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Love Message Section (Slide 1) -->
+        <section id="message" class="section slide-down">
+            <div class="container flex-center">
+                <div class="love-letter">
+                    <span class="emoji-float">🥺</span>
+                    <h3 id="letterHeading"></h3>
+                    <div id="letterBody" class="love-text"></div>
+                    <span class="emoji-float bottom-right">💖</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline items will be injected here as individual sections by script.js -->
+        <div id="dynamicTimeline"></div>
+
+        <!-- Gift Boxes Section -->
+        <section id="gifts" class="section slide-down">
+            <div class="container">
+                <h2 class="section-title">Open Your Surprises 🎁</h2>
+                <div class="gift-grid">
+                    <!-- Gift Box 1 -->
+                    <div class="gift-box" data-gift="1">
+                        <div class="gift-box-inner">
+                            <div class="gift-lid"></div>
+                            <div class="gift-container">🎁</div>
+                        </div>
+                        <span>Open Me</span>
+                    </div>
+
+                    <!-- Gift Box 2 -->
+                    <div class="gift-box" data-gift="2">
+                        <div class="gift-box-inner">
+                            <div class="gift-lid"></div>
+                            <div class="gift-container">🎁</div>
+                        </div>
+                        <span>Magic Pack</span>
+                    </div>
+
+                    <!-- Gift Box 3 -->
+                    <div class="gift-box" data-gift="3">
+                        <div class="gift-box-inner">
+                            <div class="gift-lid"></div>
+                            <div class="gift-container">🎁</div>
+                        </div>
+                        <span>Best Moments</span>
+                    </div>
+
+                    <!-- Gift Box 4 -->
+                    <div class="gift-box" data-gift="4">
+                        <div class="gift-box-inner">
+                            <div class="gift-lid"></div>
+                            <div class="gift-container">🎁</div>
+                        </div>
+                        <span>Our Dreams</span>
+                    </div>
+
+                    <!-- Gift Box 5 -->
+                    <div class="gift-box" data-gift="5">
+                        <div class="gift-box-inner">
+                            <div class="gift-lid"></div>
+                            <div class="gift-container">🎁</div>
+                        </div>
+                        <span>For You</span>
+                    </div>
+
+                    <!-- Gift Box 6 -->
+                    <div class="gift-box" data-gift="6">
+                        <div class="gift-box-inner">
+                            <div class="gift-lid"></div>
+                            <div class="gift-container">🎁</div>
+                        </div>
+                        <span>Love Forever</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer / Closing (Slide 4) -->
+        <footer id="closing" class="section slide-down">
+            <div class="container flex-center">
+                <div class="final-message" id="footerContainer"></div>
+                <div class="footer-heart">❤️</div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal for Gift Boxes -->
+    <div id="giftModal" class="modal">
+        <div class="modal-content glass">
+            <span class="close-modal">&times;</span>
+            <div id="modalBody">
+                <!-- Content injected by script.js -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
