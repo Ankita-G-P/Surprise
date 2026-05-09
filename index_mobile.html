@@ -314,13 +314,19 @@
 
             const heading = document.getElementById('letterHeading');
             const body = document.getElementById('letterBody');
+            console.log('Letter elements found:', { heading: !!heading, body: !!body });
+            
             if (heading) {
-                typeEffect(heading, CONFIG.letterHeading, 80);
-            }
-            if (body) {
-                setTimeout(() => {
-                    typeEffect(body, CONFIG.letterBody.join('\n\n'), 30);
-                }, 2000);
+                console.log('Starting letter heading animation...');
+                typeEffect(heading, CONFIG.letterHeading, 80, () => {
+                    console.log('Letter heading completed, starting body...');
+                    // Start body typing after heading completes
+                    if (body) {
+                        typeEffect(body, CONFIG.letterBody.join('\n\n'), 30);
+                    }
+                });
+            } else {
+                console.error('Letter heading element not found!');
             }
 
             // Render timeline
