@@ -393,22 +393,57 @@
             // Simple navigation
             let currentSlide = 0;
             const slides = document.querySelectorAll('.section');
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
             
-            document.getElementById('nextBtn')?.addEventListener('click', () => {
-                if (currentSlide < slides.length - 1) {
-                    slides[currentSlide].classList.remove('active');
-                    currentSlide++;
-                    slides[currentSlide].classList.add('active');
-                }
+            console.log('Navigation setup:', {
+                slides: slides.length,
+                nextBtn: !!nextBtn,
+                prevBtn: !!prevBtn,
+                currentSlide: currentSlide
             });
-
-            document.getElementById('prevBtn')?.addEventListener('click', () => {
-                if (currentSlide > 0) {
-                    slides[currentSlide].classList.remove('active');
-                    currentSlide--;
-                    slides[currentSlide].classList.add('active');
+            
+            function showSlide(index) {
+                if (index < 0 || index >= slides.length) return;
+                
+                console.log('Showing slide:', index);
+                
+                // Hide all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active', 'slide-current');
+                });
+                
+                // Show current slide
+                currentSlide = index;
+                slides[currentSlide].classList.add('active', 'slide-current');
+                
+                // Update button states
+                if (prevBtn) {
+                    prevBtn.style.display = currentSlide === 0 ? 'none' : 'block';
                 }
-            });
+                if (nextBtn) {
+                    nextBtn.style.display = currentSlide === slides.length - 1 ? 'none' : 'block';
+                }
+                
+                console.log('Slide changed to:', currentSlide);
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    console.log('Next button clicked, current slide:', currentSlide);
+                    showSlide(currentSlide + 1);
+                });
+            }
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    console.log('Prev button clicked, current slide:', currentSlide);
+                    showSlide(currentSlide - 1);
+                });
+            }
+            
+            // Initialize first slide
+            showSlide(0);
 
             console.log('Content initialized successfully!');
         }
