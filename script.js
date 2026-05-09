@@ -331,8 +331,13 @@ function initLockScreen() {
     const bgMusic = document.getElementById('bgMusic');
 
     const handleUnlock = () => {
+        console.log('Password entered:', passwordInput.value);
+        console.log('Expected password:', CONFIG.password);
+        console.log('Comparison:', passwordInput.value.toLowerCase(), '===', CONFIG.password.toLowerCase());
+        
         if (passwordInput.value.toLowerCase() === CONFIG.password.toLowerCase()) {
             // Success
+            console.log('Password correct - unlocking...');
             lockScreen.classList.remove('active');
             mainContent.classList.add('active');
             
