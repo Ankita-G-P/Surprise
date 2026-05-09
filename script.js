@@ -323,12 +323,22 @@ document.addEventListener('DOMContentLoaded', init);
 // 🔐 LOCK SCREEN & PASSWORD
 // ==========================================
 function initLockScreen() {
+    console.log('Initializing lock screen...');
     const unlockBtn = document.getElementById('unlockBtn');
     const passwordInput = document.getElementById('passwordInput');
     const lockScreen = document.getElementById('lockScreen');
     const mainContent = document.getElementById('mainContent');
     const errorMessage = document.getElementById('errorMessage');
     const bgMusic = document.getElementById('bgMusic');
+    
+    console.log('Elements found:', {
+        unlockBtn: !!unlockBtn,
+        passwordInput: !!passwordInput,
+        lockScreen: !!lockScreen,
+        mainContent: !!mainContent,
+        errorMessage: !!errorMessage,
+        bgMusic: !!bgMusic
+    });
 
     const handleUnlock = () => {
         console.log('Password entered:', passwordInput.value);
@@ -360,10 +370,21 @@ function initLockScreen() {
         }
     };
 
-    unlockBtn.addEventListener('click', handleUnlock);
-    passwordInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleUnlock();
-    });
+    if (unlockBtn) {
+        console.log('Adding click event listener to unlock button...');
+        unlockBtn.addEventListener('click', handleUnlock);
+    } else {
+        console.error('Unlock button not found!');
+    }
+    
+    if (passwordInput) {
+        console.log('Adding keypress event listener to password input...');
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleUnlock();
+        });
+    } else {
+        console.error('Password input not found!');
+    }
 }
 
 // ==========================================
