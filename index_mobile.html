@@ -419,10 +419,14 @@
 
             // Render gift boxes
             const giftContainer = document.getElementById('giftContainer');
+            console.log('Gift container found:', !!giftContainer);
+            console.log('Gift data keys:', Object.keys(CONFIG.giftData));
+            
             if (giftContainer) {
                 let html = '';
                 Object.keys(CONFIG.giftData).forEach(key => {
                     const gift = CONFIG.giftData[key];
+                    console.log(`Rendering gift ${key}:`, gift.title);
                     html += `
                         <div class="gift-box" data-gift="${key}">
                             <div class="gift-box-content">
@@ -434,17 +438,27 @@
                     `;
                 });
                 giftContainer.innerHTML = html;
+                console.log('Gift HTML set, length:', html.length);
 
                 // Add click events to gift boxes
-                document.querySelectorAll('.gift-box').forEach(box => {
+                const giftBoxes = document.querySelectorAll('.gift-box');
+                console.log('Gift boxes found:', giftBoxes.length);
+                
+                giftBoxes.forEach(box => {
                     box.addEventListener('click', function() {
+                        console.log('Gift box clicked!');
                         const giftId = this.getAttribute('data-gift');
                         const data = CONFIG.giftData[giftId];
                         if (data) {
+                            console.log('Gift data found:', data.title);
                             alert(`${data.title}\n\n${data.message}`);
+                        } else {
+                            console.error('Gift data not found for ID:', giftId);
                         }
                     });
                 });
+            } else {
+                console.error('Gift container not found!');
             }
 
             // Render footer
