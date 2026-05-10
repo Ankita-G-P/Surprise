@@ -277,27 +277,50 @@
             const mainContent = document.getElementById('mainContent');
             const errorMessage = document.getElementById('errorMessage');
             
+            console.log('Unlock elements found:', {
+                unlockBtn: !!unlockBtn,
+                passwordInput: !!passwordInput,
+                lockScreen: !!lockScreen,
+                mainContent: !!mainContent,
+                errorMessage: !!errorMessage
+            });
+            
             if (unlockBtn && passwordInput && lockScreen && mainContent) {
+                console.log('All unlock elements found, setting up click handler...');
                 unlockBtn.addEventListener('click', function() {
                     console.log('Unlock button clicked!');
                     const password = passwordInput.value;
                     console.log('Password entered:', password);
+                    console.log('Password length:', password.length);
+                    console.log('Password to lowercase:', password.toLowerCase());
+                    console.log('Comparing to: iloveyougiddi');
+                    console.log('Password match:', password.toLowerCase() === 'iloveyougiddi');
                     
                     if (password.toLowerCase() === 'iloveyougiddi') {
                         console.log('Password correct - unlocking!');
+                        console.log('Lock screen before:', lockScreen.style.display);
+                        console.log('Main content before:', mainContent.style.display);
+                        
                         lockScreen.style.display = 'none';
                         mainContent.style.display = 'block';
                         mainContent.classList.add('active');
                         errorMessage.style.display = 'none';
                         
+                        console.log('Lock screen after:', lockScreen.style.display);
+                        console.log('Main content after:', mainContent.style.display);
+                        
                         // Initialize content after unlock
                         setTimeout(() => {
+                            console.log('Calling initializeContent...');
                             initializeContent();
                         }, 500);
                     } else {
                         console.log('Password incorrect');
-                        errorMessage.textContent = 'Incorrect Password 💔';
-                        errorMessage.style.display = 'block';
+                        console.log('Error message element:', errorMessage);
+                        if (errorMessage) {
+                            errorMessage.textContent = 'Incorrect Password 💔';
+                            errorMessage.style.display = 'block';
+                        }
                         passwordInput.value = '';
                         passwordInput.style.border = '2px solid red';
                         setTimeout(() => {
@@ -307,10 +330,18 @@
                 });
                 
                 passwordInput.addEventListener('keypress', function(e) {
+                    console.log('Key pressed:', e.key);
                     if (e.key === 'Enter') {
+                        console.log('Enter key pressed, triggering unlock button click');
                         unlockBtn.click();
                     }
                 });
+            } else {
+                console.log('Missing unlock elements!');
+                console.log('unlockBtn:', unlockBtn);
+                console.log('passwordInput:', passwordInput);
+                console.log('lockScreen:', lockScreen);
+                console.log('mainContent:', mainContent);
             }
         });
 
