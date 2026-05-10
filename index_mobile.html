@@ -331,13 +331,17 @@
 
             // Render timeline
             const timelineContainer = document.getElementById('dynamicTimeline');
+            console.log('Timeline container found:', !!timelineContainer);
+            console.log('Timeline data length:', CONFIG.timelineData.length);
+            
             if (timelineContainer) {
                 let html = '';
                 CONFIG.timelineData.forEach((item, index) => {
+                    console.log(`Processing timeline item ${index}:`, item.title);
                     const mediaUrl = `https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/${item.media}`;
                     const mediaHTML = item.mediaType === 'video' 
                         ? `<video src="${mediaUrl}" controls autoplay muted></video>`
-                        : `<img src="${mediaUrl}" alt="${item.title}">`;
+                        : `<img src="${mediaUrl}" alt="${item.title}" onerror="console.log('Image failed to load:', '${mediaUrl}'); this.src='https://placehold.co/600x400?text=Photo+Missing';">`;
                     
                     html += `
                         <div class="timeline-single-card glass">
@@ -352,6 +356,9 @@
                     `;
                 });
                 timelineContainer.innerHTML = html;
+                console.log('Timeline HTML set, length:', html.length);
+            } else {
+                console.error('Timeline container not found!');
             }
 
             // Render gift boxes
