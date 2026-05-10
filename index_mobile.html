@@ -394,19 +394,21 @@
                 giftBoxes.forEach(box => {
                     box.addEventListener('click', function() {
                         console.log('Gift box clicked!');
+                        console.log('Box element:', this);
+                        console.log('Box attributes:', this.attributes);
                         const giftId = this.getAttribute('data-gift');
+                        console.log('Gift ID extracted:', giftId);
                         const data = CONFIG.giftData[giftId];
+                        console.log('Gift data found:', data);
+                        console.log('Available gift data keys:', Object.keys(CONFIG.giftData));
+                        console.log('CONFIG.giftData:', CONFIG.giftData);
                         if (data) {
-                            console.log('Gift data found:', data.title);
                             showGiftModal(data);
                         } else {
-                            console.error('Gift data not found for ID:', giftId);
+                            console.log('No gift data found for ID:', giftId);
                         }
                     });
                 });
-            } else {
-                console.error('Gift container not found!');
-            }
 
             // Render footer
             const footer = document.getElementById('footerContainer');
