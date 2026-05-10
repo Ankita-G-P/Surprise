@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Unlock</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .lock-screen { display: block; }
+        .main-content { display: none; }
+        input { padding: 10px; margin: 10px; }
+        button { padding: 10px 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div id="lockScreen" class="lock-screen">
+        <h1>Enter Password</h1>
+        <input type="password" id="passwordInput" placeholder="Password...">
+        <button onclick="testUnlock()">Unlock</button>
+        <div id="errorMessage"></div>
+    </div>
+    
+    <div id="mainContent" class="main-content">
+        <h1>UNLOCKED! 🎉</h1>
+        <p>The birthday surprise is ready!</p>
+    </div>
+
+    <script>
+        function testUnlock() {
+            console.log('Test unlock called!');
+            alert('Button clicked!');
+            
+            const password = document.getElementById('passwordInput').value;
+            console.log('Password:', password);
+            
+            if (password.toLowerCase() === 'iloveyougiddi') {
+                console.log('Correct password!');
+                document.getElementById('lockScreen').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+            } else {
+                console.log('Wrong password');
+                document.getElementById('errorMessage').textContent = 'Wrong password!';
+            }
+        }
+    </script>
+</body>
+</html>
