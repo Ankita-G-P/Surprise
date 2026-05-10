@@ -408,14 +408,18 @@
                 
                 console.log('Showing slide:', index);
                 
-                // Hide all slides
-                slides.forEach(slide => {
+                // Hide all slides with display none
+                slides.forEach((slide, i) => {
+                    slide.style.display = 'none';
                     slide.classList.remove('active', 'slide-current');
+                    console.log(`Slide ${i} hidden`);
                 });
                 
-                // Show current slide
+                // Show current slide with display block
                 currentSlide = index;
+                slides[currentSlide].style.display = 'block';
                 slides[currentSlide].classList.add('active', 'slide-current');
+                console.log(`Slide ${currentSlide} shown`);
                 
                 // Update button states
                 if (prevBtn) {
