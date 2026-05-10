@@ -212,70 +212,14 @@
                 "I love you more than words can express. Lets create memories together forever take this journey to the infinity and lets become success together❤️💖",
                 "I Love You Always and Forever💝."
             ],
-            timelineData: [
-                {
-                    date: "Jan 29, 2025",
-                    title: "First Meet 🌸",
-                    text: "The day the stars aligned and I first saw your beautiful smile.",
-                    icon: "🌸",
-                    media: "timeline1.mp4.mp4",
-                    mediaType: "video",
-                    autoPlay: true
-                },
-                {
-                    date: "Aug 16, 2025",
-                    title: "First Photo 📸",
-                    text: "Our very first selfie together. We looked so nervous yet happy!",
-                    icon: "📸",
-                    media: "timeline2.jpeg.jpeg",
-                    mediaType: "photo",
-                    autoPlay: true
-                },
-                {
-                    date: "Apr 25, 2026",
-                    title: "First Trip ✈️", 
-                    text: "Our first adventure together. Exploring new places with you is my favorite thing.",
-                    icon: "✈️",
-                    media: "timeline3.jpeg.jpeg",
-                    mediaType: "photo",
-                    autoPlay: true
-                },
-                {
-                    date: "Jan 02, 2026",
-                    title: "First Date ❤️",
-                    text: "A magical evening that I wish I could live over and over again.",
-                    icon: "❤️",
-                    media: "timeline4.jpeg.jpeg",
-                    mediaType: "photo",
-                    autoPlay: true
-                },
-                {
-                    date: "No date",
-                    title: "Favorite Memory 💫",
-                    text: "Walking through the beach, feeling the world belonged to just us.",
-                    icon: "💫",
-                    media: "timeline5.jpeg.jpeg",
-                    mediaType: "photo",
-                    autoPlay: true
-                },
-                {
-                    date: "Everyday",
-                    title: "First Long Call 🌙",
-                    text: "Hours turning into minutes when we talk about everything and nothing.",
-                    icon: "🌙",
-                    media: "timeline6.jpeg.jpeg",
-                    mediaType: "photo",
-                    autoPlay: true
-                }
-            ],
             giftData: {
                 "1": {
                     title: "The First Time We Met 🌸",
                     date: "That day",
                     message: "I still remember the butterflies in my stomach. That day changed my world forever.",
                     media: [
-                        { src: "box1.mp4.mp4", type: "video" },
-                        { src: "box2.jpeg.jpeg", type: "photo" }
+                        { src: "box1.mp4", type: "video" },
+                        { src: "box2.jpeg", type: "photo" }
                     ] 
                 },
                 "2": {
@@ -283,8 +227,8 @@
                     date: "Always",           
                     message: "Every trip with you is a new chapter in our beautiful story. I love exploring the world by your side.",
                     media: [
-                        { src: "box3.mp4.mp4", type: "video" },
-                        { src: "box4.jpeg.jpeg", type: "photo" }
+                        { src: "box3.mp4", type: "video" },
+                        { src: "box4.jpeg", type: "photo" }
                     ]
                 },
                 "3": {
@@ -292,8 +236,8 @@
                     date: "Always",           
                     message: "It's the little things—the way you laugh, the way you hold my hand. You make everything sweeter.",
                     media: [
-                        { src: "box5.jpeg.jpeg", type: "photo" },
-                        { src: "box6.jpeg.jpeg", type: "photo" }
+                        { src: "box5.jpeg", type: "photo" },
+                        { src: "box6.jpeg", type: "photo" }
                     ]
                 },
                 "4": {
@@ -301,7 +245,7 @@
                     date: "Always",           
                     message: "If I could stop time, I'd stop it right in those moments when it's just you and me.",
                     media: [
-                        { src: "box7.jpeg.jpeg", type: "photo" }
+                        { src: "box7.jpeg", type: "photo" }
                     ]
                 },
                 "5": {
@@ -309,7 +253,7 @@
                     date: "Everyday",         
                     message: "Spending whole day knowing you're in my life is the greatest gift I've ever received.",
                     media: [
-                        { src: "box8.jpeg.jpeg", type: "photo" }
+                        { src: "box8.jpeg", type: "photo" }
                     ]
                 },
                 "6": {
@@ -317,7 +261,7 @@
                     date: "Always",
                     message: "I can't wait to spend my whole life celebrate it together. I love you forever.",
                     media: [
-                        { src: "box9.mp4.mp4", type: "video" }
+                        { src: "box9.mp4", type: "video" }
                     ]
                 }
             }
@@ -415,8 +359,6 @@
                 console.error('Letter heading element not found!');
             }
 
-            // Timeline memories are now individual slides - no need for dynamic rendering
-
             // Render gift boxes
             const giftContainer = document.getElementById('giftContainer');
             console.log('Gift container found:', !!giftContainer);
@@ -457,82 +399,6 @@
                         }
                     });
                 });
-
-                // Function to show gift modal with photos
-                function showGiftModal(giftData) {
-                    console.log('Opening gift modal for:', giftData.title);
-                    console.log('Gift media data:', giftData.media);
-                    
-                    const modal = document.getElementById('giftModal');
-                    const modalBody = document.getElementById('modalBody');
-                    
-                    if (modal && modalBody) {
-                        // Create media HTML
-                        let mediaHTML = '';
-                        if (giftData.media && giftData.media.length > 0) {
-                            console.log('Processing', giftData.media.length, 'media items');
-                            giftData.media.forEach((media, index) => {
-                                console.log(`Media ${index}:`, media);
-                                const mediaUrl = `https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/${media.src}`;
-                                console.log('Media URL:', mediaUrl);
-                                
-                                if (media.type === 'video') {
-                                    mediaHTML += `
-                                        <div style="margin: 10px 0;">
-                                            <video src="${mediaUrl}" controls autoplay muted style="max-width: 100%; height: auto;" 
-                                                onerror="console.log('Video failed to load:', '${mediaUrl}'); this.style.display='none';">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        </div>
-                                    `;
-                                } else {
-                                    mediaHTML += `
-                                        <div style="margin: 10px 0;">
-                                            <img src="${mediaUrl}" alt="${giftData.title}" style="max-width: 100%; height: auto;" 
-                                                onerror="console.log('Image failed to load:', '${mediaUrl}'); this.src='https://placehold.co/600x400?text=Photo+Missing';" 
-                                                onload="console.log('Image loaded successfully:', '${mediaUrl}');">
-                                        </div>
-                                    `;
-                                }
-                            });
-                        } else {
-                            console.log('No media found for this gift');
-                            mediaHTML = '<p style="color: #666;">No photos or videos available for this gift.</p>';
-                        }
-                        
-                        console.log('Generated media HTML length:', mediaHTML.length);
-                        
-                        modalBody.innerHTML = `
-                            <h2>${giftData.title}</h2>
-                            <p style="color: #666; margin-bottom: 10px;">${giftData.date}</p>
-                            <div style="margin: 20px 0;">
-                                ${mediaHTML}
-                            </div>
-                            <p style="line-height: 1.6;">${giftData.message}</p>
-                        `;
-                        
-                        modal.style.display = 'block';
-                        console.log('Modal displayed');
-                        
-                        // Close modal when clicking X or outside
-                        const closeBtn = modal.querySelector('.close-modal');
-                        if (closeBtn) {
-                            closeBtn.onclick = () => {
-                                console.log('Modal closed via X button');
-                                modal.style.display = 'none';
-                            };
-                        }
-                        
-                        window.onclick = (event) => {
-                            if (event.target === modal) {
-                                console.log('Modal closed via outside click');
-                                modal.style.display = 'none';
-                            }
-                        };
-                    } else {
-                        console.error('Modal or modal body not found!');
-                    }
-                }
             } else {
                 console.error('Gift container not found!');
             }
@@ -601,6 +467,82 @@
             
             // Initialize first slide
             showSlide(0);
+
+            // Function to show gift modal with photos
+            function showGiftModal(giftData) {
+                console.log('Opening gift modal for:', giftData.title);
+                console.log('Gift media data:', giftData.media);
+                
+                const modal = document.getElementById('giftModal');
+                const modalBody = document.getElementById('modalBody');
+                
+                if (modal && modalBody) {
+                    // Create media HTML
+                    let mediaHTML = '';
+                    if (giftData.media && giftData.media.length > 0) {
+                        console.log('Processing', giftData.media.length, 'media items');
+                        giftData.media.forEach((media, index) => {
+                            console.log(`Media ${index}:`, media);
+                            const mediaUrl = `https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/${media.src}`;
+                            console.log('Media URL:', mediaUrl);
+                            
+                            if (media.type === 'video') {
+                                mediaHTML += `
+                                    <div style="margin: 10px 0;">
+                                        <video src="${mediaUrl}" controls autoplay muted style="max-width: 100%; height: auto;" 
+                                            onerror="console.log('Video failed to load:', '${mediaUrl}'); this.style.display='none';">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </div>
+                                `;
+                            } else {
+                                mediaHTML += `
+                                    <div style="margin: 10px 0;">
+                                        <img src="${mediaUrl}" alt="${giftData.title}" style="max-width: 100%; height: auto;" 
+                                            onerror="console.log('Image failed to load:', '${mediaUrl}'); this.src='https://placehold.co/600x400?text=Photo+Missing';" 
+                                            onload="console.log('Image loaded successfully:', '${mediaUrl}');">
+                                    </div>
+                                `;
+                            }
+                        });
+                    } else {
+                        console.log('No media found for this gift');
+                        mediaHTML = '<p style="color: #666;">No photos or videos available for this gift.</p>';
+                    }
+                    
+                    console.log('Generated media HTML length:', mediaHTML.length);
+                    
+                    modalBody.innerHTML = `
+                        <h2>${giftData.title}</h2>
+                        <p style="color: #666; margin-bottom: 10px;">${giftData.date}</p>
+                        <div style="margin: 20px 0;">
+                            ${mediaHTML}
+                        </div>
+                        <p style="line-height: 1.6;">${giftData.message}</p>
+                    `;
+                    
+                    modal.style.display = 'block';
+                    console.log('Modal displayed');
+                    
+                    // Close modal when clicking X or outside
+                    const closeBtn = modal.querySelector('.close-modal');
+                    if (closeBtn) {
+                        closeBtn.onclick = () => {
+                            console.log('Modal closed via X button');
+                            modal.style.display = 'none';
+                        };
+                    }
+                    
+                    window.onclick = (event) => {
+                        if (event.target === modal) {
+                            console.log('Modal closed via outside click');
+                            modal.style.display = 'none';
+                        }
+                    };
+                } else {
+                    console.error('Modal or modal body not found!');
+                }
+            }
 
             console.log('Content initialized successfully!');
         }
