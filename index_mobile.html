@@ -460,6 +460,9 @@
 
                 // Function to show gift modal with photos
                 function showGiftModal(giftData) {
+                    console.log('Opening gift modal for:', giftData.title);
+                    console.log('Gift media data:', giftData.media);
+                    
                     const modal = document.getElementById('giftModal');
                     const modalBody = document.getElementById('modalBody');
                     
@@ -467,15 +470,37 @@
                         // Create media HTML
                         let mediaHTML = '';
                         if (giftData.media && giftData.media.length > 0) {
-                            giftData.media.forEach(media => {
+                            console.log('Processing', giftData.media.length, 'media items');
+                            giftData.media.forEach((media, index) => {
+                                console.log(`Media ${index}:`, media);
                                 const mediaUrl = `https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/${media.src}`;
+                                console.log('Media URL:', mediaUrl);
+                                
                                 if (media.type === 'video') {
-                                    mediaHTML += `<video src="${mediaUrl}" controls autoplay muted style="max-width: 100%; margin: 10px 0;"></video>`;
+                                    mediaHTML += `
+                                        <div style="margin: 10px 0;">
+                                            <video src="${mediaUrl}" controls autoplay muted style="max-width: 100%; height: auto;" 
+                                                onerror="console.log('Video failed to load:', '${mediaUrl}'); this.style.display='none';">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    `;
                                 } else {
-                                    mediaHTML += `<img src="${mediaUrl}" alt="${giftData.title}" style="max-width: 100%; margin: 10px 0;" onerror="console.log('Image failed to load:', '${mediaUrl}'); this.src='https://placehold.co/600x400?text=Photo+Missing';">`;
+                                    mediaHTML += `
+                                        <div style="margin: 10px 0;">
+                                            <img src="${mediaUrl}" alt="${giftData.title}" style="max-width: 100%; height: auto;" 
+                                                onerror="console.log('Image failed to load:', '${mediaUrl}'); this.src='https://placehold.co/600x400?text=Photo+Missing';" 
+                                                onload="console.log('Image loaded successfully:', '${mediaUrl}');">
+                                        </div>
+                                    `;
                                 }
                             });
+                        } else {
+                            console.log('No media found for this gift');
+                            mediaHTML = '<p style="color: #666;">No photos or videos available for this gift.</p>';
                         }
+                        
+                        console.log('Generated media HTML length:', mediaHTML.length);
                         
                         modalBody.innerHTML = `
                             <h2>${giftData.title}</h2>
@@ -487,18 +512,25 @@
                         `;
                         
                         modal.style.display = 'block';
+                        console.log('Modal displayed');
                         
                         // Close modal when clicking X or outside
                         const closeBtn = modal.querySelector('.close-modal');
                         if (closeBtn) {
-                            closeBtn.onclick = () => modal.style.display = 'none';
+                            closeBtn.onclick = () => {
+                                console.log('Modal closed via X button');
+                                modal.style.display = 'none';
+                            };
                         }
                         
                         window.onclick = (event) => {
                             if (event.target === modal) {
+                                console.log('Modal closed via outside click');
                                 modal.style.display = 'none';
                             }
                         };
+                    } else {
+                        console.error('Modal or modal body not found!');
                     }
                 }
             } else {
