@@ -370,16 +370,21 @@
                     const gift = CONFIG.giftData[key];
                     console.log(`Rendering gift ${key}:`, gift.title);
                     html += `
-                        <div class="gift-box" data-gift="${key}">
+                        <div class="gift-box" data-gift="${key}" style="width: 280px; height: 280px; padding: 20px; margin: 15px; border-radius: 20px; background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); backdrop-filter: blur(10px); border: 2px solid rgba(255,255,255,0.2); box-shadow: 0 8px 32px rgba(0,0,0,0.1); cursor: pointer; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
                             <div class="gift-box-content">
-                                <div class="gift-icon">🎁</div>
-                                <h3>${gift.title}</h3>
-                                <span class="gift-date">${gift.date}</span>
+                                <div class="gift-icon" style="font-size: 60px; margin-bottom: 15px;">🎁</div>
+                                <h3 style="font-size: 18px; margin: 10px 0; color: #fff;">${gift.title}</h3>
+                                <span class="gift-date" style="font-size: 14px; color: rgba(255,255,255,0.8);">${gift.date}</span>
                             </div>
                         </div>
                     `;
                 });
                 giftContainer.innerHTML = html;
+                giftContainer.style.display = 'grid';
+                giftContainer.style.gridTemplateColumns = 'repeat(auto-fit, minmax(280px, 1fr))';
+                giftContainer.style.gap = '20px';
+                giftContainer.style.justifyContent = 'center';
+                giftContainer.style.padding = '20px';
                 console.log('Gift HTML set, length:', html.length);
 
                 // Add click events to gift boxes
@@ -483,42 +488,68 @@
                         console.log('Processing', giftData.media.length, 'media items');
                         giftData.media.forEach((media, index) => {
                             console.log(`Media ${index}:`, media);
-                            const mediaUrl = `https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/${media.src}`;
-                            console.log('Media URL:', mediaUrl);
+                            
+                            // Try multiple URL formats for better loading
+                            const possibleUrls = [
+                                `https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/${media.src}`,
+                                `https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/${media.src}.jpeg`,
+                                `https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/${media.src}.mp4`,
+                                `https://raw.githubusercontent.com/Ankita-G-P/Surprise/main/${media.src}`,
+                                `https://raw.githubusercontent.com/Ankita-G-P/Surprise/main/${media.src}.jpeg`,
+                                `https://raw.githubusercontent.com/Ankita-G-P/Surprise/main/${media.src}.mp4`
+                            ];
+                            
+                            const mediaUrl = possibleUrls[0];
+                            console.log('Primary Media URL:', mediaUrl);
                             
                             if (media.type === 'video') {
                                 mediaHTML += `
-                                    <div style="margin: 10px 0;">
-                                        <video src="${mediaUrl}" controls autoplay muted style="max-width: 100%; height: auto;" 
-                                            onerror="console.log('Video failed to load:', '${mediaUrl}'); this.style.display='none';">
+                                    <div style="margin: 15px 0;">
+                                        <video controls autoplay muted style="max-width: 100%; height: 300px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+                                            <source src="${mediaUrl}" type="video/mp4">
+                                            <source src="${possibleUrls[2]}" type="video/mp4">
+                                            <source src="${possibleUrls[5]}" type="video/mp4">
                                             Your browser does not support the video tag.
                                         </video>
+                                        <p style="font-size: 12px; color: #666; margin-top: 5px;">Video: ${media.src}</p>
                                     </div>
                                 `;
                             } else {
                                 mediaHTML += `
-                                    <div style="margin: 10px 0;">
-                                        <img src="${mediaUrl}" alt="${giftData.title}" style="max-width: 100%; height: auto;" 
-                                            onerror="console.log('Image failed to load:', '${mediaUrl}'); this.src='https://placehold.co/600x400?text=Photo+Missing';" 
+                                    <div style="margin: 15px 0;">
+                                        <img src="${mediaUrl}" alt="${giftData.title}" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"
+                                            onerror="
+                                                console.log('Primary image failed, trying fallbacks...');
+                                                this.src='${possibleUrls[1]}';
+                                                this.onerror=function(){
+                                                    console.log('Fallback 1 failed, trying fallback 2...');
+                                                    this.src='${possibleUrls[3]}';
+                                                    this.onerror=function(){
+                                                        console.log('All URLs failed, showing placeholder');
+                                                        this.src='https://placehold.co/600x400?text=Photo+Missing';
+                                                    };
+                                                };
+                                            "
                                             onload="console.log('Image loaded successfully:', '${mediaUrl}');">
+                                        <p style="font-size: 12px; color: #666; margin-top: 5px;">Photo: ${media.src}</p>
                                     </div>
                                 `;
                             }
                         });
                     } else {
                         console.log('No media found for this gift');
-                        mediaHTML = '<p style="color: #666;">No photos or videos available for this gift.</p>';
+                        mediaHTML = '<p style="color: #666; padding: 20px;">No photos or videos available for this gift.</p>';
                     }
                     
                     console.log('Generated media HTML length:', mediaHTML.length);
                     
                     modalBody.innerHTML = `
-                        <h2>${giftData.title}</h2>
-                        <p style="color: #666; margin-bottom: 10px;">${giftData.date}</p>
-                        <div style="margin: 20px 0;">
+                        <h2 style="color: #333; margin-bottom: 10px;">${giftData.title}</h2>
+                        <p style="color: #666; margin-bottom: 20px; font-style: italic;">${giftData.date}</p>
+                        <div style="margin: 20px 0; max-height: 60vh; overflow-y: auto;">
                             ${mediaHTML}
                         </div>
-                        <p style="line-height: 1.6;">${giftData.message}</p>
+                        <p style="line-height: 1.8; color: #333; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-top: 20px;">${giftData.message}</p>
                     `;
                     
                     modal.style.display = 'block';
