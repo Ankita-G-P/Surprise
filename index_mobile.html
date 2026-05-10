@@ -287,6 +287,14 @@
             
             if (unlockBtn && passwordInput && lockScreen && mainContent) {
                 console.log('All unlock elements found, setting up click handler...');
+                
+                // Simple test to verify button click works
+                unlockBtn.addEventListener('click', function() {
+                    console.log('Unlock button clicked! TEST WORKS!');
+                    alert('Button click test working!');
+                });
+                
+                // Add the actual unlock handler
                 unlockBtn.addEventListener('click', function() {
                     console.log('Unlock button clicked!');
                     const password = passwordInput.value;
