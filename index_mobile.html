@@ -546,7 +546,7 @@
                     modalBody.innerHTML = `
                         <h2 style="color: #333; margin-bottom: 10px;">${giftData.title}</h2>
                         <p style="color: #666; margin-bottom: 20px; font-style: italic;">${giftData.date}</p>
-                        <div style="margin: 20px 0; max-height: 60vh; overflow-y: auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; justify-content: center; align-items: center;">
+                        <div style="margin: 20px 0; max-height: 60vh; overflow-y: auto; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                             ${mediaHTML}
                         </div>
                         <p style="line-height: 1.8; color: #333; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-top: 20px;">${giftData.message}</p>
