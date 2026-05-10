@@ -56,17 +56,103 @@
             </div>
         </section>
 
-        <!-- Timeline Section (Slide 1) -->
-        <section id="timeline" class="section slide-down">
+        <!-- Timeline Memory 1 (Slide 1) -->
+        <section id="timeline1" class="section slide-down">
             <div class="container">
-                <h2 class="section-title">Our Beautiful Journey 💕</h2>
-                <div id="dynamicTimeline">
-                    <!-- Timeline memories will be injected here -->
+                <h2 class="section-title">Memory #1 💕</h2>
+                <div class="timeline-single-card glass">
+                    <div class="timeline-dot-large">🌸</div>
+                    <span class="date">Jan 29, 2025</span>
+                    <h4>First Meet 🌸</h4>
+                    <div class="timeline-img-container large">
+                        <video src="https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/timeline1.mp4.mp4" controls autoplay muted></video>
+                    </div>
+                    <p class="memory-text">The day the stars aligned and I first saw your beautiful smile.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Love Message Section (Slide 2) -->
+        <!-- Timeline Memory 2 (Slide 2) -->
+        <section id="timeline2" class="section slide-down">
+            <div class="container">
+                <h2 class="section-title">Memory #2 💕</h2>
+                <div class="timeline-single-card glass">
+                    <div class="timeline-dot-large">📸</div>
+                    <span class="date">Aug 16, 2025</span>
+                    <h4>First Photo 📸</h4>
+                    <div class="timeline-img-container large">
+                        <img src="https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/timeline2.jpeg.jpeg" alt="First Photo">
+                    </div>
+                    <p class="memory-text">Our very first selfie together. We looked so nervous yet happy!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Memory 3 (Slide 3) -->
+        <section id="timeline3" class="section slide-down">
+            <div class="container">
+                <h2 class="section-title">Memory #3 💕</h2>
+                <div class="timeline-single-card glass">
+                    <div class="timeline-dot-large">✈️</div>
+                    <span class="date">Apr 25, 2026</span>
+                    <h4>First Trip ✈️</h4>
+                    <div class="timeline-img-container large">
+                        <img src="https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/timeline3.jpeg.jpeg" alt="First Trip">
+                    </div>
+                    <p class="memory-text">Our first adventure together. Exploring new places with you is my favorite thing.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Memory 4 (Slide 4) -->
+        <section id="timeline4" class="section slide-down">
+            <div class="container">
+                <h2 class="section-title">Memory #4 💕</h2>
+                <div class="timeline-single-card glass">
+                    <div class="timeline-dot-large">❤️</div>
+                    <span class="date">Jan 02, 2026</span>
+                    <h4>First Date ❤️</h4>
+                    <div class="timeline-img-container large">
+                        <img src="https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/timeline4.jpeg.jpeg" alt="First Date">
+                    </div>
+                    <p class="memory-text">A magical evening that I wish I could live over and over again.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Memory 5 (Slide 5) -->
+        <section id="timeline5" class="section slide-down">
+            <div class="container">
+                <h2 class="section-title">Memory #5 💕</h2>
+                <div class="timeline-single-card glass">
+                    <div class="timeline-dot-large">💫</div>
+                    <span class="date">No date</span>
+                    <h4>Favorite Memory 💫</h4>
+                    <div class="timeline-img-container large">
+                        <img src="https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/timeline5.jpeg.jpeg" alt="Favorite Memory">
+                    </div>
+                    <p class="memory-text">Walking through the beach, feeling the world belonged to just us.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Memory 6 (Slide 6) -->
+        <section id="timeline6" class="section slide-down">
+            <div class="container">
+                <h2 class="section-title">Memory #6 💕</h2>
+                <div class="timeline-single-card glass">
+                    <div class="timeline-dot-large">🌙</div>
+                    <span class="date">Everyday</span>
+                    <h4>First Long Call 🌙</h4>
+                    <div class="timeline-img-container large">
+                        <img src="https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/timeline6.jpeg.jpeg" alt="First Long Call">
+                    </div>
+                    <p class="memory-text">Hours turning into minutes when we talk about everything and nothing.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Love Message Section (Slide 7) -->
         <section id="message" class="section slide-down">
             <div class="container flex-center">
                 <div class="love-letter">
@@ -78,7 +164,7 @@
             </div>
         </section>
 
-        <!-- Gift Boxes Section (Slide 3) -->
+        <!-- Gift Boxes Section (Slide 8) -->
         <section id="gifts" class="section slide-down">
             <div class="container">
                 <h2 class="section-title">Special Gifts For You 🎁</h2>
@@ -88,7 +174,7 @@
             </div>
         </section>
 
-        <!-- Final Message Section (Slide 4) -->
+        <!-- Final Message Section (Slide 9) -->
         <section id="closing" class="section slide-down">
             <div class="container flex-center">
                 <div class="final-message-container glass">
@@ -329,37 +415,7 @@
                 console.error('Letter heading element not found!');
             }
 
-            // Render timeline
-            const timelineContainer = document.getElementById('dynamicTimeline');
-            console.log('Timeline container found:', !!timelineContainer);
-            console.log('Timeline data length:', CONFIG.timelineData.length);
-            
-            if (timelineContainer) {
-                let html = '';
-                CONFIG.timelineData.forEach((item, index) => {
-                    console.log(`Processing timeline item ${index}:`, item.title);
-                    const mediaUrl = `https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/${item.media}`;
-                    const mediaHTML = item.mediaType === 'video' 
-                        ? `<video src="${mediaUrl}" controls autoplay muted></video>`
-                        : `<img src="${mediaUrl}" alt="${item.title}" onerror="console.log('Image failed to load:', '${mediaUrl}'); this.src='https://placehold.co/600x400?text=Photo+Missing';">`;
-                    
-                    html += `
-                        <div class="timeline-single-card glass">
-                            <div class="timeline-dot-large">${item.icon}</div>
-                            <span class="date">${item.date}</span>
-                            <h4>${item.title}</h4>
-                            <div class="timeline-img-container large">
-                                ${mediaHTML}
-                            </div>
-                            <p class="memory-text">${item.text}</p>
-                        </div>
-                    `;
-                });
-                timelineContainer.innerHTML = html;
-                console.log('Timeline HTML set, length:', html.length);
-            } else {
-                console.error('Timeline container not found!');
-            }
+            // Timeline memories are now individual slides - no need for dynamic rendering
 
             // Render gift boxes
             const giftContainer = document.getElementById('giftContainer');
