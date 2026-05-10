@@ -429,6 +429,14 @@
                 currentSlide: currentSlide
             });
             
+            // Debug slide elements
+            console.log('All slide elements found:');
+            slides.forEach((slide, index) => {
+                console.log(`Slide ${index}:`, slide);
+                console.log(`Slide ${index} classes:`, slide.className);
+                console.log(`Slide ${index} display:`, slide.style.display);
+            });
+            
             function showSlide(index) {
                 if (index < 0 || index >= slides.length) return;
                 
