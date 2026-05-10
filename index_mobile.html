@@ -27,7 +27,7 @@
             <h1>A special birthday surprise is waiting for you ❤️</h1>
             <div class="password-container">
                 <input type="password" id="passwordInput" placeholder="Enter the secret password...">
-                <button id="unlockBtn">Unlock ❤️</button>
+                <button id="unlockBtn" onclick="unlockWebsite()">Unlock ❤️</button>
                 <div id="errorMessage" class="error-text"></div>
             </div>
             <p class="lock-hint">Hint:Naan ninn kade yavagu eno helu anteni? </p>
@@ -198,6 +198,40 @@
     <script>
         // Complete self-contained JavaScript for mobile compatibility
         console.log('Mobile website loading...');
+        
+        // Simple unlock function
+        function unlockWebsite() {
+            console.log('Unlock website called!');
+            const passwordInput = document.getElementById('passwordInput');
+            const lockScreen = document.getElementById('lockScreen');
+            const mainContent = document.getElementById('mainContent');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            const password = passwordInput.value;
+            console.log('Password entered:', password);
+            
+            if (password.toLowerCase() === 'iloveyougiddi') {
+                console.log('Password correct - unlocking!');
+                lockScreen.style.display = 'none';
+                mainContent.style.display = 'block';
+                mainContent.classList.add('active');
+                errorMessage.style.display = 'none';
+                
+                // Initialize content after unlock
+                setTimeout(() => {
+                    initializeContent();
+                }, 500);
+            } else {
+                console.log('Password incorrect');
+                errorMessage.textContent = 'Incorrect Password 💔';
+                errorMessage.style.display = 'block';
+                passwordInput.value = '';
+                passwordInput.style.border = '2px solid red';
+                setTimeout(() => {
+                    passwordInput.style.border = '';
+                }, 1000);
+            }
+        }
         
         const CONFIG = {
             password: "ILoveYouGiddi",
