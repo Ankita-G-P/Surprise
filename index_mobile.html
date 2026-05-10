@@ -432,25 +432,28 @@
                 
                 console.log('Showing slide:', index);
                 
-                // Hide all slides with display none
+                // Hide all slides
                 slides.forEach((slide, i) => {
+                    console.log(`Hiding slide ${i}:`, slide);
                     slide.style.display = 'none';
-                    slide.classList.remove('active', 'slide-current');
-                    console.log(`Slide ${i} hidden`);
                 });
                 
-                // Show current slide with display block
+                // Show current slide
+                console.log('Showing slide element:', slides[index]);
+                slides[index].style.display = 'block';
                 currentSlide = index;
-                slides[currentSlide].style.display = 'block';
-                slides[currentSlide].classList.add('active', 'slide-current');
-                console.log(`Slide ${currentSlide} shown`);
+                
+                console.log(`Slide ${index} shown`);
                 
                 // Update button states
                 if (prevBtn) {
                     prevBtn.style.display = currentSlide === 0 ? 'none' : 'block';
+                    console.log('Prev button display:', currentSlide === 0 ? 'none' : 'block');
                 }
+                
                 if (nextBtn) {
                     nextBtn.style.display = currentSlide === slides.length - 1 ? 'none' : 'block';
+                    console.log('Next button display:', currentSlide === slides.length - 1 ? 'none' : 'block');
                 }
                 
                 console.log('Slide changed to:', currentSlide);
