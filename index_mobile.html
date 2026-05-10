@@ -451,12 +451,56 @@
                         const data = CONFIG.giftData[giftId];
                         if (data) {
                             console.log('Gift data found:', data.title);
-                            alert(`${data.title}\n\n${data.message}`);
+                            showGiftModal(data);
                         } else {
                             console.error('Gift data not found for ID:', giftId);
                         }
                     });
                 });
+
+                // Function to show gift modal with photos
+                function showGiftModal(giftData) {
+                    const modal = document.getElementById('giftModal');
+                    const modalBody = document.getElementById('modalBody');
+                    
+                    if (modal && modalBody) {
+                        // Create media HTML
+                        let mediaHTML = '';
+                        if (giftData.media && giftData.media.length > 0) {
+                            giftData.media.forEach(media => {
+                                const mediaUrl = `https://cdn.jsdelivr.net/gh/Ankita-G-P/Surprise@main/${media.src}`;
+                                if (media.type === 'video') {
+                                    mediaHTML += `<video src="${mediaUrl}" controls autoplay muted style="max-width: 100%; margin: 10px 0;"></video>`;
+                                } else {
+                                    mediaHTML += `<img src="${mediaUrl}" alt="${giftData.title}" style="max-width: 100%; margin: 10px 0;" onerror="console.log('Image failed to load:', '${mediaUrl}'); this.src='https://placehold.co/600x400?text=Photo+Missing';">`;
+                                }
+                            });
+                        }
+                        
+                        modalBody.innerHTML = `
+                            <h2>${giftData.title}</h2>
+                            <p style="color: #666; margin-bottom: 10px;">${giftData.date}</p>
+                            <div style="margin: 20px 0;">
+                                ${mediaHTML}
+                            </div>
+                            <p style="line-height: 1.6;">${giftData.message}</p>
+                        `;
+                        
+                        modal.style.display = 'block';
+                        
+                        // Close modal when clicking X or outside
+                        const closeBtn = modal.querySelector('.close-modal');
+                        if (closeBtn) {
+                            closeBtn.onclick = () => modal.style.display = 'none';
+                        }
+                        
+                        window.onclick = (event) => {
+                            if (event.target === modal) {
+                                modal.style.display = 'none';
+                            }
+                        };
+                    }
+                }
             } else {
                 console.error('Gift container not found!');
             }
